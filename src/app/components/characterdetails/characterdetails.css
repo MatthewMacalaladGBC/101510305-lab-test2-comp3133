@@ -1,0 +1,70 @@
+.page-container {
+  padding: 24px;
+  min-height: 100vh;
+}
+.back-btn {
+  color: #000000 !important;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+.error-msg {
+  color: #ff6b6b;
+  text-align: center;
+}
+.detail-card {
+  display: flex;
+  gap: 40px;
+  background: #00012bea;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 860px;
+  margin: 0 auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+}
+.detail-img {
+  width: 280px;
+  height: 360px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.detail-info {
+  flex: 1;
+}
+.char-name {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  margin: 0 0 20px;
+}
+.char-house {
+  font-family: 'Georgia', serif;
+  font-weight: 900;
+  margin: 0 0 20px;
+}
+p {
+  margin: 8px 0;
+  font-size: 1rem;
+}
+.label {
+  font-weight: bold;
+  color: #aaa;
+  margin-right: 6px;
+}
+.value {
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .detail-card { flex-direction: column; }
+  .detail-img { width: 100%; height: 300px; }
+}

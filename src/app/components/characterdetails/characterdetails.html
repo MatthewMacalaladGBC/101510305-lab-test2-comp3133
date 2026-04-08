@@ -1,1 +1,68 @@
-<p>characterdetails works!</p>
+<div class="page-container" [style.background]="houseBackground">
+  <button mat-icon-button class="back-btn" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+    Return
+  </button>
+
+  @if (loading()) {
+    <div class="spinner-container">
+      <mat-spinner />
+    </div>
+  }
+
+  @if (error()) {
+    <p class="error-msg">{{ error() }}</p>
+  }
+
+  @if (!loading() && character(); as char) {
+    <div class="detail-card">
+      <img
+        [src]="char.image || getPlaceholder(char.name)"
+        [alt]="char.name"
+        class="detail-img"
+      />
+      <div class="detail-info">
+        <h2 class="char-name" [style.color]="(char.house ?? '') | houseColour">
+          {{ char.name }}
+        </h2>
+
+        <p><span class="label">House: </span>
+          @if (char.house) {
+            <span class="char-house" [style.color]="(char.house ?? '') | houseColour">{{ char.house }}</span>
+          } @else {
+            <span class="value">None</span>
+          }
+        </p>
+
+        <p><span class="label">Actor: </span>
+          <span class="value">{{ char.actor || 'Unknown' }}</span>
+        </p>
+
+        <p><span class="label">Wizard: </span>
+          <span class="value">{{ char.wizard ? 'Yes' : 'No' }}</span>
+        </p>
+
+        <p><span class="label">Species: </span>
+          <span class="value">{{ char.species || 'Unknown' }}</span>
+        </p>
+
+        <p><span class="label">Ancestry: </span>
+          <span class="value">{{ char.ancestry || 'Unknown' }}</span>
+        </p>
+
+        <p><span class="label">Wand Wood: </span>
+          <span class="value">{{ char.wand?.wood || 'Unknown' }}</span>
+        </p>
+
+        <p><span class="label">Wand Core: </span>
+          <span class="value">{{ char.wand?.core || 'Unknown' }}</span>
+        </p>
+
+        <p><span class="label">Wand Length: </span>
+          <span class="value">{{ char.wand?.length || 'Unknown' }}</span>
+        </p>
+
+      </div>
+    </div>
+  }
+</div>

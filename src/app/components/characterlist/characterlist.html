@@ -1,1 +1,37 @@
-<p>characterlist works!</p>
+<div class="page-container">
+  <h1 class="page-title">Harry Potter Characters</h1>
+
+  @if (loading()) {
+    <div class="spinner-container">
+      <mat-spinner />
+    </div>
+  }
+
+  @if (error()) {
+    <p class="error-msg">{{ error() }}</p>
+  }
+
+  @if (!loading() && !error()) {
+    <div class="grid">
+      @for (character of characters(); track character.id) {
+        <mat-card class="character-card" (click)="goToDetails(character)">
+          <img
+            [src]="character.image || getPlaceholder(character.name)"
+            [alt]="character.name"
+            class="character-img"
+          />
+          <mat-card-content class="card-content">
+            <p class="char-name">{{ character.name }}</p>
+            @if (character.house) {
+              <p class="char-house" [style.color]="(character.house ?? '') | houseColour">
+                {{ character.house }}
+              </p>
+            } @else {
+              <p class="char-house no-house">No House Found</p>
+            }
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  }
+</div>
