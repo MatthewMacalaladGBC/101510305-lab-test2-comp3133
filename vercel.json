@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "dist/101510305-lab-test2-comp3133/browser",
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
